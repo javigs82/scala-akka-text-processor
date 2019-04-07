@@ -125,7 +125,7 @@ sbt run
 ## References
 
  - [Watching a Directory for Changes](https://docs.oracle.com/javase/tutorial/essential/io/notification.html)
- - [Spark ml features - tfidf](https://spark.apache.org/docs/2.2.0/ml-features.html#tf-idf) )
+ - [Spark ml features - tfidf](https://spark.apache.org/docs/2.2.0/ml-features.html#tf-idf)
 
 ## Author
  
