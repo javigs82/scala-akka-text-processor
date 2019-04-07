@@ -69,14 +69,14 @@ In order to develop the solution, following actor hierarchy has been defined:
 
 - TextProcessorApp: Main application. Receives paramters and send it to proper actors. 
 
-- TextProcessorSupervisor: It calls to ProcessManager to start listen directory and PrinterManager.
+  - TextProcessorSupervisor: It calls to ProcessManager to start listen directory and PrinterManager.
 
-  - TextProcessorManager: In charge of coordinate task like watching directory, analyze tf for documents and recovery
+    - TextProcessorManager: In charge of coordinate task like watching directory, analyze tf for documents and recovery
   on startup
   
-    - Analyzer: It provides analysis functions
+      - Analyzer: It provides analysis functions
     
-  - PrinterManager: In charge of printing periodically via `akka.timers`
+    - PrinterManager: In charge of printing periodically via `akka.timers`
 
         
 ### Messages
