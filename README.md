@@ -67,7 +67,7 @@ doc73.txt 0.76
 
 In order to develop the solution, following actor hierarchy has been defined:
 
-- TextProcessorApp: Main application. Receives paramters and send it to proper actors. 
+- TextProcessorApp: Main application. Receives parameters and send it to proper actors. 
 
   - TextProcessorSupervisor: It calls to ProcessManager to start listen directory and PrinterManager.
 

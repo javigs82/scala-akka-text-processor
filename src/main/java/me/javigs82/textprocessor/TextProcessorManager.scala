@@ -70,11 +70,9 @@ class TextProcessorManager(directory: String, tt: String) extends Actor with Act
       fileCounter += 1
       log.info("new tf file {} processed with tf {}", file.getName, tf)
 
-    case RequestTopNTF(topN) => {
+    case RequestTopNTF(topN) =>
       log.info("request top {} tf for documents", topN)
       sender() ! tfMap.toSeq.sortWith(_._2 > _._2).take(topN)
-
-    }
   }
 
 }
