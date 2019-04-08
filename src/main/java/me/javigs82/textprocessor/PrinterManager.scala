@@ -4,7 +4,7 @@ import java.io.File
 
 import akka.actor.{Actor, ActorLogging, ActorRef, Props, Timers}
 import akka.util.Timeout
-import me.javigs82.textprocessor.PrinterManager.{PrintTfPeriodically, StartPrintTfPeriodically}
+import me.javigs82.textprocessor.PrinterManager.{PrintTf, StartPrintTfPeriodically}
 import me.javigs82.textprocessor.TextProcessorManager.RequestTopNTF
 
 import scala.concurrent.duration._
@@ -19,7 +19,7 @@ object PrinterManager {
   //milliseconds
   final case class StartPrintTfPeriodically(p: Long, topN: Int)
 
-  private final case class PrintTfPeriodically(topN: Int)
+  final case class PrintTf(topN: Int)
 
 }
 
@@ -34,9 +34,9 @@ class PrinterManager(textProcessorManager: ActorRef) extends Actor with ActorLog
   def receive = {
     case StartPrintTfPeriodically(p, topN) =>
       log.info("starting printing for {} periods", p)
-      timers.startPeriodicTimer(self, PrintTfPeriodically(topN), p.millis)
+      timers.startPeriodicTimer(self, PrintTf(topN), p.millis)
 
-    case PrintTfPeriodically(topN) =>
+    case PrintTf(topN) =>
       val resultTopN: Future[Seq[(File, Double)]] = ask(textProcessorManager, RequestTopNTF(topN)).mapTo[Seq[(File, Double)]]
       resultTopN map (item => item.foreach(p => println(p._1.getName + " " + p._2)))
       println("********************")

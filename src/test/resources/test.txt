@@ -1,0 +1,9 @@
+Fork me on GitHub
+ BigDataClass.org
+Getting Started
+Exercise 1: Tf-Idf (Java)
+Exercise 2: Tf-Idf (Scala)
+Overview
+1: Document Frequency
+2: Term Frequency
+3: Join
