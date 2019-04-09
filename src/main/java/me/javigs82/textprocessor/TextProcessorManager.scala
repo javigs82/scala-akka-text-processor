@@ -55,9 +55,6 @@ class TextProcessorManager(directory: String, tt: String) extends Actor with Act
         d.listFiles.filter(_.isFile).foreach(f => analyzer ! RequestTf(f, tt))
         //watch for new files
         watchServiceTask.watch(Paths.get(directory))
-      } else {
-        log.error("{} is not a directory")
-        throw new IllegalArgumentException()
       }
 
 
