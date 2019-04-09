@@ -48,6 +48,7 @@ doc73.txt 0.76
  - Persistence is not the objective of the subject.
  - Spark for ml features.
  - This version only contains printing of topN TF documents. TF-idf will implement in future versions.
+ - Parse Command Line is not the purpose of the subject, so please feel free to set them up in `TextProcessorApp.scala`
 
 
 ### Caveats in this version
