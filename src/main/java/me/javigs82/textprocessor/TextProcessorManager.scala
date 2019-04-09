@@ -36,14 +36,14 @@ class TextProcessorManager(directory: String, tt: String) extends Actor with Act
 
 
   override def preStart() {
-    log.info("TextProcessorManager actor started")
+    log.debug("TextProcessorManager actor started")
     watchThread.setDaemon(true)
     watchThread.start()
   }
 
   override def postStop() {
     watchThread.interrupt()
-    log.info("TextProcessorManager actor stopped")
+    log.debug("TextProcessorManager actor stopped")
   }
 
   override def receive: Receive = {
@@ -62,16 +62,16 @@ class TextProcessorManager(directory: String, tt: String) extends Actor with Act
 
 
     case FileCreated(file) =>
-      log.info("file created {}", file.getAbsolutePath)
+      log.debug("file created {}", file.getAbsolutePath)
       analyzer ! RequestTf(file, tt)
 
     case ResponseTF(file, tf) =>
       tfMap += (file -> tf)
       fileCounter += 1
-      log.info("new tf file {} processed with tf {}", file.getName, tf)
+      log.debug("new tf file {} processed with tf {}", file.getName, tf)
 
     case RequestTopNTF(topN) =>
-      log.info("request top {} tf for documents", topN)
+      log.debug("request top {} tf for documents", topN)
       sender() ! tfMap.toSeq.sortWith(_._2 > _._2).take(topN)
   }
 

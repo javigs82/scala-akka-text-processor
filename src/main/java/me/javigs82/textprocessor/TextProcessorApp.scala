@@ -8,6 +8,7 @@ object TextProcessorApp {
 
   def main(args: Array[String]): Unit = {
     val system = ActorSystem("text-processor-system")
+
     val d = "/home/javi/testMonitoring"
     val n = 5
     val tt = "createDataFrame MinHash"

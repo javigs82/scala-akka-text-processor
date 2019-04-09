@@ -4,6 +4,8 @@ import org.apache.spark.ml.feature.{CountVectorizerModel, Tokenizer}
 import org.apache.spark.ml.linalg.SparseVector
 import org.apache.spark.sql.{Row, SparkSession}
 
+import org.apache.log4j.{Level, Logger}
+
 object TfIdfUtil {
 
   private val spark = SparkSession

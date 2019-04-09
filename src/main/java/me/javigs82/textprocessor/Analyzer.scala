@@ -19,7 +19,7 @@ object Analyzer {
 class Analyzer extends Actor with ActorLogging {
   override def receive: Receive = {
     case RequestTf(f, tt) =>
-      log.info("analyzing {} for tt {}", f.getPath, tt)
+      log.debug("analyzing {} for tt {}", f.getPath, tt)
       //supposing tt is "unlock password"
       //sender() ! ResponseTF(f, scala.util.Random.nextDouble())//
       sender() ! ResponseTF(f, TfIdfUtil.getTF(f.getPath, tt))
